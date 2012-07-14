@@ -13,8 +13,7 @@ const (
 
 func main() {
     var message string
-    flag.StringVar(&message, "message", "hi dax!", "tell a ducktern")
-    flag.Parse()
+    parseArguments(&message);
     conn, err := net.Dial("tcp", SERVER)
     if err != nil {
         // handle error
@@ -25,4 +24,9 @@ func main() {
         // handle error
     }
     fmt.Println(status)
+}
+
+func parseArguments(message *string) {
+    flag.StringVar(message, "message", "", "tell a ducktern")
+    flag.Parse()
 }
