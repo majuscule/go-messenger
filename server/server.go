@@ -23,5 +23,5 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
-    fmt.Println("success");
+    fmt.Println("success")
 }
