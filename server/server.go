@@ -34,5 +34,12 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
+    fmt.Println("[SUCCESS] Connection received.")
     fmt.Println(io.Copy(os.Stdout, conn))
+
+    go dispatchMessage(message, target)
+}
+
+func dispatchMessage(message string, target string) {
+
 }
