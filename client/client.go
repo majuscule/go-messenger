@@ -14,7 +14,7 @@ const (
 
 func main() {
     var message string
-    parseArguments(&message);
+    parseArguments(&message)
     conn, _ := net.Dial("tcp", SERVER_ADDR + ":" + SERVER_PORT)
     fmt.Fprintf(conn, message)
     status, _ := bufio.NewReader(conn).ReadString('\n')
