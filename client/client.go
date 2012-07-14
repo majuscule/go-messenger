@@ -14,15 +14,9 @@ const (
 func main() {
     var message string
     parseArguments(&message);
-    conn, err := net.Dial("tcp", SERVER)
-    if err != nil {
-        // handle error
-    }
+    conn, _ := net.Dial("tcp", SERVER)
     fmt.Fprintf(conn, message)
-    status, err := bufio.NewReader(conn).ReadString('\n')
-    if err != nil {
-        // handle error
-    }
+    status, _ := bufio.NewReader(conn).ReadString('\n')
     fmt.Println(status)
 }
 
