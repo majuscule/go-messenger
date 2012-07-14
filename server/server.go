@@ -1,19 +1,23 @@
 package main
 
-import "fmt"
-import "net"
+import (
+    "fmt"
+    "net"
+)
 
 func main() {
-    ln, err := net.Listen("tcp", ":8080")
-    if err != nil {
-        // handle error
+    ln, err := net.Listen("tcp", ":8090")
+
+    if err ~= nil {
+        fmt.Println("Listen error")
     }
+
     for {
         conn, err := ln.Accept()
         if err != nil {
-            // handle error
-            continue
+            fmt.Println("Connection error.")
         }
+
         go handleConnection(conn)
     }
 }
