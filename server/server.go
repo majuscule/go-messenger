@@ -5,17 +5,26 @@ import (
     "net"
 )
 
+const (
+    OUR_PORT = "8090"
+)
+
 func main() {
-    ln, err := net.Listen("tcp", ":8090")
+    
+    ln, err := net.Listen("tcp", ":" + OUR_PORT)
 
     if err != nil {
-        fmt.Println("Listen error")
+        fmt.Println("[ERROR] Failed to listen on port " + OUR_PORT + ".")
     }
+
+    fmt.Println("Listening on port " + OUR_PORT + "...")
 
     for {
         conn, err := ln.Accept()
         if err != nil {
-            fmt.Println("Connection error.")
+            fmt.Println("[ERROR] Connection failed.")
+ 
+            continue
         }
 
         go handleConnection(conn)
