@@ -27,10 +27,6 @@ func main() {
             fmt.Println("[ERROR] Connection failed.")
 
             continue
-        }
-
-        go handleConnection(conn)
-    }
 }
 
 func handleConnection(conn net.Conn) {
