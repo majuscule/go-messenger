@@ -4,7 +4,7 @@ import (
     "fmt"
     "net"
     "bufio"
-    "os"
+    "flag"
 )
 
 const (
@@ -12,11 +12,14 @@ const (
 )
 
 func main() {
+    var message string
+    flag.StringVar(&message, "message", "hi dax!", "tell a ducktern")
+    flag.Parse()
     conn, err := net.Dial("tcp", SERVER)
     if err != nil {
         // handle error
     }
-    fmt.Fprintf(conn, os.Args[1])
+    fmt.Fprintf(conn, message)
     status, err := bufio.NewReader(conn).ReadString('\n')
     if err != nil {
         // handle error
