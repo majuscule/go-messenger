@@ -8,7 +8,7 @@ import (
 func main() {
     ln, err := net.Listen("tcp", ":8090")
 
-    if err ~= nil {
+    if err != nil {
         fmt.Println("Listen error")
     }
 
