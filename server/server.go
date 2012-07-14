@@ -3,6 +3,8 @@ package main
 import (
     "fmt"
     "net"
+    "io"
+    "os"
 )
 
 const (
@@ -10,7 +12,7 @@ const (
 )
 
 func main() {
-    
+
     ln, err := net.Listen("tcp", ":" + OUR_PORT)
 
     if err != nil {
@@ -23,7 +25,7 @@ func main() {
         conn, err := ln.Accept()
         if err != nil {
             fmt.Println("[ERROR] Connection failed.")
- 
+
             continue
         }
 
@@ -32,5 +34,5 @@ func main() {
 }
 
 func handleConnection(conn net.Conn) {
-    fmt.Println("success")
+    fmt.Println(io.Copy(os.Stdout, conn))
 }
